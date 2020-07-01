@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="passwordGeneratorStyle.css">
+</head>
+<body>
+    <div id="container">
+<button id="generateButton">Generate</button><br />
+<h1>Generate Password:</h1> <input type="text" id="password" size="80"/>
+    </div>
+    <script type="text/javascript">
+
+    var characters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var numbers = ['0','1','2','3','4','5','6','7','8','9',];
+var symbols = ['!','@','#','$','%','^','&','*','=','-','_'];
+
+var generateButton = document.getElementById("generateButton");
+var password = document.getElementById("password");
+
+
+generateButton.addEventListener("click", function() {
+
+    var number = confirm("Do you want numbers in your password?");
+    var symbol = confirm("Do you want symbols in your password?");
+    var numberOfCharacters = prompt("How many characters do you want for your password?")
+  
+    if (symbol === true && number === true) {
+        var charactersAll = characters.concat(numbers).concat(symbols);
+        var passwordField = '';
+        for(var i=0; i<numberOfCharacters; i++) {
+         passwordField = passwordField + charactersAll[Math.floor(Math.random() * 72)]
+        }
+        document.getElementById("password").setAttribute("value", passwordField);
+    }
+    else if (number === true && symbol === false) {
+        var charactersAndNumbers = characters.concat(numbers);
+        var passwordField2 = '';
+        for(var i=0; i<numberOfCharacters; i++) {
+         passwordField2 = passwordField2 + charactersAndNumbers[Math.floor(Math.random() * 62)]
+        }
+        document.getElementById("password").setAttribute("value", passwordField2);
+    }
+    else if (symbol === true && number === false) {
+        var charactersAndSymbols = characters.concat(symbols);
+        var passwordField3 = '';
+        for(var i=0; i<numberOfCharacters; i++) {
+         passwordField3 = passwordField3 + charactersAndSymbols[Math.floor(Math.random() * 63)]
+        }
+        document.getElementById("password").setAttribute("value", passwordField3);
+    } 
+  
+    else { 
+        var passwordField4 = '';
+        for(var i=0; i<numberOfCharacters; i++) {
+         passwordField4 = passwordField4 + characters[Math.floor(Math.random() * 52)]
+        }
+        document.getElementById("password").setAttribute("value", characters[Math.floor(Math.random() * 52)] + characters[Math.floor(Math.random() * 52)] + characters[Math.floor(Math.random() * 52)] + characters[Math.floor(Math.random() * 52)] + characters[Math.floor(Math.random() * 52)] + characters[Math.floor(Math.random() * 52)] + characters[Math.floor(Math.random() * 52)] + characters[Math.floor(Math.random() * 52)] + characters[Math.floor(Math.random() * 52)] + characters[Math.floor(Math.random() * 52)] + characters[Math.floor(Math.random() * 52)] + characters[Math.floor(Math.random() * 52)]);
+    }
+});
+    </script>
+</body>
+</html>
